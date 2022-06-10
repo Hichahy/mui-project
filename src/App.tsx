@@ -1,10 +1,11 @@
 import "./App.scss";
 import React from 'react'
+import Landing from './components/landing'
 
 function App() {
   return (
     <div className="App">
-      <p>hello</p>
+      <Landing />
     </div>
   );
 }
