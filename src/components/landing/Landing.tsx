@@ -18,7 +18,7 @@ const Landing = ({ meal, loadMeal }: IProps) => {
   return (
     <div>
       {meal.map((i) => (
-       <p key={i.id}>{i.name}</p>
+        <p key={i.id}>{i.name}</p>
       ))}
     </div>
   );
