@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { IMeal } from "../../types/types";
 
+
 interface IProps {
   meal: IMeal[];
   loadMeal: () => void;
