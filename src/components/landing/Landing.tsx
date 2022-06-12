@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import "./landing.scss"
+import "./landing.scss";
 import { IMeal } from "../../types/types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import { CardActionArea } from "@mui/material";
 
 interface IProps {
@@ -18,13 +20,24 @@ const Landing = ({ meal, loadMeal }: IProps) => {
   }, []);
 
   if (meal.length < 1) {
-    return <div>loading...</div>;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "93vh",
+        }}
+      >
+        <CircularProgress size="100px" />
+      </Box>
+    );
   }
 
   return (
     <div className="container-card">
       {meal.map((i) => (
-        <Card style={{margin: "20px"}} key={i.id} sx={{ maxWidth: 345 }}>
+        <Card style={{ margin: "20px" }} key={i.id} sx={{ maxWidth: 345 }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -39,6 +52,7 @@ const Landing = ({ meal, loadMeal }: IProps) => {
               <Typography variant="body2" color="text.secondary">
                 {i.description}
               </Typography>
+              <Typography variant="h5">{i.price.toFixed(2)}$</Typography>
             </CardContent>
           </CardActionArea>
         </Card>
