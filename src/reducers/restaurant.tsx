@@ -1,7 +1,5 @@
-import typeToReducer from 'type-to-reducer'
-import { 
-  LOAD_MEAL
-} from '../common/types'
+import typeToReducer from "type-to-reducer";
+import { LOAD_MEAL } from "../common/types";
 
 interface stateRestaurant {
   meal: Array<{
@@ -10,25 +8,25 @@ interface stateRestaurant {
     image: string;
     description: string;
     price: number;
-    type:string[];
+    type: string[];
   }>;
   filteredItems: Array<{}>;
 }
 
 const initialState: stateRestaurant = {
-meal: [],
-filteredItems: [],
-}
+  meal: [],
+  filteredItems: [],
+};
 
 export const user = typeToReducer(
   {
     [LOAD_MEAL]: (state: stateRestaurant, action: any) => ({
       ...state,
       meal: action.payload,
-      filteredItems: action.payload
+      filteredItems: action.payload,
     }),
   },
   initialState
-)
+);
 
-export default user
+export default user;
