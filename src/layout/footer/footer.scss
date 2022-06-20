@@ -1,0 +1,30 @@
+.container-footer {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  border-top: 1px solid rgb(210, 210, 210);
+}
+
+.description-header {
+  width: 50%;
+}
+
+.box-footer {
+  display: flex;
+}
+
+@media screen and (max-width: 500px) {
+  .description-header {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1051px) {
+  .box-footer {
+    display: flex;
+    flex-direction: column;
+  }
+}
