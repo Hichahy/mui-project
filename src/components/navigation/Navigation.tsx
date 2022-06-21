@@ -6,10 +6,13 @@ import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
 import Basket from "../../layout/basket/Basket";
 import BasketModal from "../../layout/basketModal/BasketModal";
 
-const Navigation = () => {
-  const [open, setOpen] = useState(false);
+interface IProps {
+  amountBasket: number;
+  basket: Array<{}>;
+}
 
-  const basketAmount = 5;
+const Navigation = ({ amountBasket, basket }: IProps) => {
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -42,12 +45,12 @@ const Navigation = () => {
             <FastfoodOutlinedIcon /> FeedMe
           </Typography>
           <Basket
-            basketAmount={basketAmount}
+            basketAmount={amountBasket}
             handleClickOpen={handleClickOpen}
           />
         </Toolbar>
       </AppBar>
-      <BasketModal basketAmount={basketAmount} open={open} setOpen={setOpen} />
+      <BasketModal basket={basket} basketAmount={amountBasket} open={open} setOpen={setOpen} />
     </>
   );
 };

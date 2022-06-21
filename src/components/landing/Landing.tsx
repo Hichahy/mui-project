@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./landing.scss";
 import { IMeal } from "../../types/types";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -16,9 +16,11 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 interface IProps {
   meal: IMeal[];
   loadMeal: () => void;
+  addProductToBasket: (i: any) => void;
 }
 
-const Landing = ({ meal, loadMeal }: IProps) => {
+const Landing = ({ meal, loadMeal, addProductToBasket }: IProps) => {
+
   useEffect(() => {
     loadMeal();
   }, []);
@@ -84,6 +86,7 @@ const Landing = ({ meal, loadMeal }: IProps) => {
                   size="small"
                   color="primary"
                   aria-label="add to shopping cart"
+                  onClick={() => addProductToBasket(i)}
                 >
                   <AddShoppingCartIcon />
                 </IconButton>

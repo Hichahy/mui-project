@@ -4,14 +4,16 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
+import TableBasket from "../tableBasket/TableBasket";
 
 interface IProps {
   open: boolean;
   setOpen: (value: boolean) => void;
   basketAmount: number;
+  basket: any;
 }
 
-const AlertDialog = ({ open, setOpen, basketAmount }: IProps) => {
+const AlertDialog = ({ open, setOpen, basketAmount, basket }: IProps) => {
   const handleClose = () => {
     setOpen(false);
   };
@@ -30,16 +32,14 @@ const AlertDialog = ({ open, setOpen, basketAmount }: IProps) => {
               Your basket is empy.
             </DialogContentText>
           ) : (
-            <DialogContentText id="alert-dialog-description">
-              Yes Youu can buy this {basketAmount} product
-            </DialogContentText>
+            <TableBasket basket={basket} />
           )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Back</Button>
           {basketAmount > 0 ? (
             <Button onClick={handleClose} autoFocus>
-              Agree
+              order now
             </Button>
           ) : null}
         </DialogActions>

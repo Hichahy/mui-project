@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface IProps {
-  basketAmount: number;
+  basketAmount: any;
   handleClickOpen: () => void;
 }
 
@@ -24,11 +24,7 @@ const Basket = ({ handleClickOpen, basketAmount }: IProps) => {
   const [btnisHightLighted, setBtnisHightLighted] = useState(false);
 
   useEffect(() => {
-    if (basketAmount === 0) {
-      return;
-    }
     setBtnisHightLighted(true);
-
     const timer = setTimeout(() => {
       setBtnisHightLighted(false);
     }, 300);
