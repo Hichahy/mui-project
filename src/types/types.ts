@@ -5,4 +5,5 @@ export interface IMeal {
         description: string;
         price: number;
         type:string[];
+        count: number
 };

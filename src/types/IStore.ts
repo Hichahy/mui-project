@@ -5,5 +5,7 @@ export interface IStore {
      meal: IMeal[];
      filteredItems: Array<{}>;
      type: Array<{}>;
+     basket: Array<{}>;
+     amountBasket: number;
     }
 }
