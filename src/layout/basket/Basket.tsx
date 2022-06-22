@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 interface IProps {
-  basketAmount: any;
+  basket: Array<{}>
   handleClickOpen: () => void;
 }
 
@@ -20,8 +20,13 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   },
 }));
 
-const Basket = ({ handleClickOpen, basketAmount }: IProps) => {
+const Basket = ({ handleClickOpen, basket}: IProps) => {
   const [btnisHightLighted, setBtnisHightLighted] = useState(false);
+
+   // funkcja akumulująca
+   const totalCount = basket.reduce((accumulator: any, currentValue: any) => {
+    return accumulator + currentValue.count
+  }, 0)
 
   useEffect(() => {
     setBtnisHightLighted(true);
@@ -31,7 +36,7 @@ const Basket = ({ handleClickOpen, basketAmount }: IProps) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [basketAmount]);
+  }, [totalCount]);
 
   return (
     <IconButton
@@ -39,10 +44,10 @@ const Basket = ({ handleClickOpen, basketAmount }: IProps) => {
       onClick={handleClickOpen}
       aria-label="cart"
     >
-      <StyledBadge badgeContent={basketAmount} color="secondary">
+      <StyledBadge  badgeContent={totalCount} color="secondary">
         <ShoppingCartIcon />
-      </StyledBadge>
-    </IconButton>
+      </StyledBadge >
+    </IconButton >
   );
 };
 

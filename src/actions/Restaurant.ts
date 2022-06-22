@@ -1,4 +1,9 @@
-import { ADD_TO_BASKET, LOAD_MEAL } from "../common/types";
+import {
+  ADD_TO_BASKET,
+  LOAD_MEAL,
+  REMOVE_FROM_BASKET,
+  DELETE_FROM_BASKET,
+} from "../common/types";
 import { IMeal } from "../types/types";
 import axios from "axios";
 
@@ -16,35 +21,47 @@ export const loadMeal = () => async (dispatch: any) => {
   }
 };
 
-//Witch Amount product
-// export const addProductToBasket = (product: IMeal) => (dispatch: any, getState: any) => {
-//   const basket = getState().restaurant.meal.slice()
-//   let alreadyExists = false
-//   basket.forEach((x: any) => {
-//     if (x.id === product.id) {
-//       alreadyExists = true
-//       x.count++
-//     }
-//   })
-//   if (!alreadyExists) {
-//     basket.push({ ...product, count: 1 })
-//   }
-//   dispatch({
-//     type: ADD_TO_BASKET,
-//     payload: { basket }
-//   })
-//   // localStorage.setItem("cartItems", JSON.stringify(cartItems));
-// }
-
 export const addProductToBasket =
   (product: IMeal) => (dispatch: any, getState: any) => {
-    const basket = getState().restaurant.basket;
-    let amountBasket = basket.length + 1
-    basket.push({ ...product });
-
+    const basket = getState().restaurant.basket.slice();
+    let alreadyExists = false;
+    basket.forEach((x: any) => {
+      if (x.id === product.id) {
+        alreadyExists = true;
+        x.count++;
+      }
+    });
+    if (!alreadyExists) {
+      basket.push({ ...product, count: 1 });
+    }
     dispatch({
       type: ADD_TO_BASKET,
-      payload: { basket, amountBasket},
+      payload: { basket },
     });
-    // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  };
+
+export const removeProductFromBasket =
+  (product: IMeal) => (dispatch: any, getState: any) => {
+    const basket = getState().restaurant.basket.slice();
+    basket.forEach((x: any) => {
+      if (x.id === product.id && product.count > 1) {
+        x.count--;
+      }
+    });
+    dispatch({
+      type: REMOVE_FROM_BASKET,
+      payload: { basket },
+    });
+  };
+
+export const deleteProductFromBasket =
+  (product: IMeal) => (dispatch: any, getState: any) => {
+    const basket = getState()
+      .restaurant.basket.slice()
+      .filter((x: any) => x.id !== product.id);
+
+    dispatch({
+      type: DELETE_FROM_BASKET,
+      payload: { basket },
+    });
   };

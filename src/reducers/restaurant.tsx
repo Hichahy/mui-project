@@ -1,5 +1,5 @@
 import typeToReducer from "type-to-reducer";
-import { ADD_TO_BASKET, LOAD_MEAL } from "../common/types";
+import { ADD_TO_BASKET, LOAD_MEAL, REMOVE_FROM_BASKET,  DELETE_FROM_BASKET } from "../common/types";
 
 interface stateRestaurant {
   meal: Array<{
@@ -33,7 +33,16 @@ export const user = typeToReducer(
     [ADD_TO_BASKET]: (state: stateRestaurant, action: any) => ({
       ...state,
       basket: action.payload.basket,
-      amountBasket: action.payload.amountBasket,
+    }),
+
+    [REMOVE_FROM_BASKET]: (state: stateRestaurant, action: any) => ({
+      ...state,
+      basket: action.payload.basket,
+    }),
+
+    [DELETE_FROM_BASKET]: (state: stateRestaurant, action: any) => ({
+      ...state,
+      basket: action.payload.basket,
     }),
   },
   initialState

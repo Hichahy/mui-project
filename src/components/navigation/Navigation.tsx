@@ -7,11 +7,18 @@ import Basket from "../../layout/basket/Basket";
 import BasketModal from "../../layout/basketModal/BasketModal";
 
 interface IProps {
-  amountBasket: number;
   basket: Array<{}>;
+  addProductToBasket: (i: any) => void;
+  removeProductFromBasket: (i: any) => void;
+  deleteProductFromBasket: (i: any) => void;
 }
 
-const Navigation = ({ amountBasket, basket }: IProps) => {
+const Navigation = ({
+  basket,
+  addProductToBasket,
+  removeProductFromBasket,
+  deleteProductFromBasket
+}: IProps) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -44,13 +51,17 @@ const Navigation = ({ amountBasket, basket }: IProps) => {
           >
             <FastfoodOutlinedIcon /> FeedMe
           </Typography>
-          <Basket
-            basketAmount={amountBasket}
-            handleClickOpen={handleClickOpen}
-          />
+          <Basket handleClickOpen={handleClickOpen} basket={basket} />
         </Toolbar>
       </AppBar>
-      <BasketModal basket={basket} basketAmount={amountBasket} open={open} setOpen={setOpen} />
+      <BasketModal
+        addProductToBasket={addProductToBasket}
+        removeProductFromBasket={removeProductFromBasket}
+        basket={basket}
+        open={open}
+        setOpen={setOpen}
+        deleteProductFromBasket={deleteProductFromBasket}
+      />
     </>
   );
 };

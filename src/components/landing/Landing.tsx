@@ -20,7 +20,6 @@ interface IProps {
 }
 
 const Landing = ({ meal, loadMeal, addProductToBasket }: IProps) => {
-
   useEffect(() => {
     loadMeal();
   }, []);
