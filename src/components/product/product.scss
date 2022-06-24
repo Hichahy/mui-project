@@ -1,0 +1,33 @@
+.product-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-img {
+  width: 40%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.description-box {
+  width: 100%;
+  padding: 70px 40px;
+  box-sizing: border-box;
+}
+
+.back {
+  color: black;
+  position: absolute;
+  margin: 20px 40px;
+}
+
+@media screen and (max-width: 500px) {
+  .product-container {
+    flex-direction: column;
+  }
+
+  .product-img {
+    width: 100%;
+  }
+}

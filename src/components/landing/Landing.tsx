@@ -12,6 +12,7 @@ import BoxHeader from "../../layout/box/BoxHeader";
 import PaidRoundedIcon from "@mui/icons-material/PaidRounded";
 import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { NavLink } from "react-router-dom";
 
 interface IProps {
   meal: IMeal[];
@@ -48,24 +49,26 @@ const Landing = ({ meal, loadMeal, addProductToBasket }: IProps) => {
             key={i.id}
             sx={{ width: 345, margin: 2, height: "fit-content" }}
           >
-            <CardActionArea>
-              <CardContent>
-                <Typography
-                  align="inherit"
-                  gutterBottom
-                  variant="body2"
-                  component="div"
-                >
-                  {i.name}
-                </Typography>
-              </CardContent>
-              <CardMedia
-                component="img"
-                height="200"
-                image={i.image}
-                alt={i.name}
-              />
-            </CardActionArea>
+            <NavLink style={{textDecoration: "none", color: "black"}} to={`/product/${i.id}`}>
+              <CardActionArea>
+                <CardContent>
+                  <Typography
+                    align="inherit"
+                    gutterBottom
+                    variant="body2"
+                    component="div"
+                  >
+                    {i.name}
+                  </Typography>
+                </CardContent>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={i.image}
+                  alt={i.name}
+                />
+              </CardActionArea>
+            </NavLink>
             <CardContent>
               <Typography
                 align="inherit"
