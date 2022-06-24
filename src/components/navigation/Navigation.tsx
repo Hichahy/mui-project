@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
 import Basket from "../../layout/basket/Basket";
 import BasketModal from "../../layout/basketModal/BasketModal";
+import { NavLink } from "react-router-dom";
 
 interface IProps {
   basket: Array<{}>;
@@ -17,7 +18,7 @@ const Navigation = ({
   basket,
   addProductToBasket,
   removeProductFromBasket,
-  deleteProductFromBasket
+  deleteProductFromBasket,
 }: IProps) => {
   const [open, setOpen] = useState(false);
 
@@ -42,15 +43,17 @@ const Navigation = ({
             justifyContent: "space-between",
           }}
         >
-          <Typography
-            display="flex"
-            alignItems="center"
-            variant="h6"
-            color="inherit"
-            component="div"
-          >
-            <FastfoodOutlinedIcon /> FeedMe
-          </Typography>
+          <NavLink style={{textDecoration: "none", color: "black"}} to="/">
+            <Typography
+              display="flex"
+              alignItems="center"
+              variant="h6"
+              color="inherit"
+              component="div"
+            >
+              <FastfoodOutlinedIcon /> FeedMe
+            </Typography>
+          </NavLink>
           <Basket handleClickOpen={handleClickOpen} basket={basket} />
         </Toolbar>
       </AppBar>

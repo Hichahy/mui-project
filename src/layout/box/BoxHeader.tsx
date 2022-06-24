@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import FastfoodOutlinedIcon from "@mui/icons-material/FastfoodOutlined";
 
 export default function BoxHeader() {
-  const header = "./header.jpg";
 
   return (
     <Box

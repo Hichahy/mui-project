@@ -64,7 +64,7 @@ const TableBasket = ({
                 <IconButton
                   onClick={() => deleteProductFromBasket(i)}
                   size="small"
-                  aria-label="remove"
+                  aria-label="delete all"
                 >
                   <DeleteForeverOutlinedIcon />
                 </IconButton>
